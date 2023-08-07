@@ -14,15 +14,15 @@ const resolvers = {
   },
   Mutation: {
     login: async (parent, { email, password }) => {
-      const myUser = await User.findOne({ email });
+      const user = await User.findOne({ email });
 
-      if (!myUser) {
+      if (!user) {
         throw new AuthenticationError("Error");
       }
 
-      const myToken = signToken(myUser);
+      const myToken = signToken(user);
 
-      return { myToken, myUser };
+      return { myToken, user };
     },
     saveBook: async (parent, { book }, context) => {
       if (context.user) {
