@@ -20,10 +20,26 @@ const resolvers = {
         throw new AuthenticationError("Error");
       }
 
+      const correctPassword = await user.isCorrectPassword(password);
+      if (!correctPassword) {
+        throw new AuthenticationError("Error");
+      }
       const myToken = signToken(user);
 
       return { myToken, user };
     },
+
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+
+      if (!user) {
+        throw new Error("Error with this user.");
+      }
+
+      const myToken = signToken(user);
+      return { myToken, user };
+    },
+
     saveBook: async (parent, { book }, context) => {
       if (context.user) {
         try {
@@ -35,6 +51,7 @@ const resolvers = {
 
           return revisedUser;
         } catch (err) {
+            console.log(err)
           throw new Error("problem with book saving");
         }
       }
