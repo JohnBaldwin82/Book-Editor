@@ -9,11 +9,13 @@ import {
   CardColumns,
 } from "react-bootstrap";
 
+// import hooks for mutations
+import { useMutation } from "@apollo/react-hooks";
+import { SAVE_BOOK } from "../utils/mutations";
+
 import Auth from "../utils/auth";
 import { searchGoogleBooks } from "../utils/API";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-import { useMutation } from "@apollo/client";
-import { SAVE_BOOK } from "../utils/mutations";
 
 const SearchBooks = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
@@ -21,8 +23,6 @@ const SearchBooks = () => {
   const [searchInput, setSearchInput] = useState("");
 
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
-
-  
 
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
@@ -132,6 +132,13 @@ const SearchBooks = () => {
                   <Card.Title>{book.title}</Card.Title>
                   <p className="small">Authors: {book.authors}</p>
                   <Card.Text>{book.description}</Card.Text>
+                  <p>
+                    {" "}
+                    <a href={book.link} rel="noopener">
+                      {" "}
+                      Go to google book{" "}
+                    </a>{" "}
+                  </p>
                   {Auth.loggedIn() && (
                     <Button
                       disabled={savedBookIds?.some(

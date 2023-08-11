@@ -14,12 +14,10 @@ import { REMOVE_BOOK } from "../utils/localStorage";
 import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
 
-
 const SavedBooks = () => {
   const { loading, data } = useQuery(GET_ME);
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
-  
   const userData = data?.me || {};
 
   const handleDeleteBook = async (bookId) => {
