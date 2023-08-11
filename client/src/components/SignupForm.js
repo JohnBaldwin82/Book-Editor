@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
-
 import Auth from "../utils/auth";
 
 // Import useMutation method and GraphQL mutation definition
@@ -37,24 +36,17 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
+    if (error) {
+      throw new Error("something went wrong!!!")
+    }
+
     try {
       // Execute addUser mutation, pass username, email, and password values
       const { data } = await addUser({
-        variables: {
-          username: userFormData.username,
-          email: userFormData.email,
-          password: userFormData.password,
-        },
+        variables: { ...userFormData},
       });
 
-      if (!data || error) {
-        throw new Error("something went wrong!");
-      }
-
-      // Get token and new user data
-      const { token, user } = data?.addUser;
-      console.log(user);
-      Auth.login(token);
+      Auth.login(data.addUser.token);
     } catch (err) {
       console.error(err);
       setShowAlert(true);
