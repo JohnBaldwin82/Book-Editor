@@ -12,7 +12,6 @@ import {
 import Auth from "../utils/auth";
 import { searchGoogleBooks } from "../utils/API";
 import { saveBookIds, getSavedBookIds } from "../utils/localStorage";
-
 import { useMutation } from "@apollo/client";
 import { SAVE_BOOK } from "../utils/mutations";
 
@@ -23,7 +22,7 @@ const SearchBooks = () => {
 
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
-  const [saveBook, { error }] = useMutation(SAVE_BOOK);
+  
 
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
@@ -71,11 +70,11 @@ const SearchBooks = () => {
 
     try {
       const { data } = await saveBook({
-        variables: { book: bookToSave },
+        variables: { bookInput: bookToSave },
       });
 
-      if (!data || error) {
-        throw new Error("something went wrong!");
+      if (error) {
+        throw new Error("somethings not right!");
       }
 
       // if book successfully saves to user's account, save book id to state
