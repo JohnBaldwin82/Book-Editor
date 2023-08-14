@@ -1,4 +1,4 @@
-# SVG Book-Search-Engine
+# Book-Search-Engine
 
 ![MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
@@ -13,7 +13,7 @@
 
 ## Description
 
-A fully functioning Google Book Search that willa allowe users to save book searches to the backend.
+A fully functioning Google Book Search that will allow users to save book searches to the backend.
 
 ## Task
 
