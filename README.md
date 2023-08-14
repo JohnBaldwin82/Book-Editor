@@ -7,8 +7,8 @@
 * [Description](#description)
 * [Task](#task)
 * [Usage](#usage)
-* [Deployed Link] (#Deployed Link)
-* [Screenshots](#Screeshots)
+* [Deployed](#deployed)
+* [Screenshots](#screeshots)
 * [Questions](#questions)
 
 ## Description
@@ -25,7 +25,7 @@ Clone the repository then run an npm Install, npm Start and npm Run Develop to o
 
 ## Screenshots
 
-## Deployed Link
+## Deployed
 
 
 ## Questions
