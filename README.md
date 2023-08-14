@@ -24,9 +24,11 @@ To modify existing code to create a book search program with a Google API refact
 Clone the repository then run an npm Install, npm Start and npm Run Develop to open it on your local machine.
 
 ## Screenshots
+![Book-Search](https://github.com/JohnBaldwin82/Book-Editor/assets/124854286/8b8b03e9-bd81-4ec0-a9c2-3fd9ae4c5186)
 
 ## Deployed
 
+https://book-editor-6f47b61bc016.herokuapp.com/
 
 ## Questions
 
