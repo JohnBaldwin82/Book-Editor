@@ -41,7 +41,7 @@ const SignupForm = () => {
     }
 
     try {
-      // Execute addUser mutation, pass username, email, and password values
+     
       const { data } = await addUser({
         variables: { ...userFormData},
       });
